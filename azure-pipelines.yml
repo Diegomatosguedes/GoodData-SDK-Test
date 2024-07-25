@@ -23,7 +23,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'build-angular'
+    customCommand: 'run build-angular'
     workingDir: '$(build.sourcesDirectory)'
 - task: ArchiveFiles@2
   inputs:
