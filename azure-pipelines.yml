@@ -13,7 +13,7 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSource: 'fromFile'
-    versionFilePath: '$(build.sourcesDirectory)'
+    versionFilePath: '$(build.sourcesDirectory)/.nvmrc'
   displayName: 'Install Node.js'
 
 - script: |
