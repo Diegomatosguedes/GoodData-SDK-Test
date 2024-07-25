@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  ArtifactName: TOTVS-Carol-Analytics
+  FeedName: agent-fastanalytics-protheus-backoffice
+  FeedDescription: 'Programa Agent, usado para envio de dados ao ambiente de GoodData do produto FAST Analytics - Protheus Backoffice'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSource: 'fromFile'
+    versionFilePath: '$(build.sourcesDirectory)'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+  displayName: 'npm install and build'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'build-angular'
+    workingDir: '$(build.sourcesDirectory)'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.sourcesDirectory)/dist/$(ArtifactName)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(ArtifactName)-$(ArtifactVersion).zip'
+    replaceExistingArchive: true
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)/$(ArtifactName)-$(ArtifactVersion).zip'
+    artifact: '$(ArtifactName)-$(ArtifactVersion).zip'
+    publishLocation: 'pipeline'
+    
