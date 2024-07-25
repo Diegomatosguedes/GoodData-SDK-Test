@@ -28,7 +28,7 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.sourcesDirectory)/dist/$(ArtifactName)'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(ArtifactName)-$(ArtifactVersion).zip'
     replaceExistingArchive: true
