@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TOTVS-Agent-Analytics": {
+    "TOTVS-Carol-Analytics": {
       "root": "",
       "sourceRoot": "src-angular",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TOTVS-Agent-Analytics",
+            "outputPath": "dist/TOTVS-Carol-Analytics/site",
             "index": "src-angular/index.html",
             "main": "src-angular/main.ts",
             "polyfills": "src-angular/polyfills.ts",
@@ -63,7 +63,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TOTVS-Agent-Analytics:build",
+            "browserTarget": "TOTVS-Carol-Analytics:build",
             "proxyConfig": "src-angular/proxy.conf.js"
           },
           "assets": [
@@ -71,7 +71,7 @@
           ],
           "configurations": {
             "production": {
-              "browserTarget": "TOTVS-Agent-Analytics:build:production"
+              "browserTarget": "TOTVS-Carol-Analytics:build:production"
             }
           }
         },
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TOTVS-Agent-Analytics:build"
+            "browserTarget": "TOTVS-Carol-Analytics:build"
           }
         },
         "test": {
@@ -120,11 +120,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TOTVS-Agent-Analytics:serve"
+            "devServerTarget": "TOTVS-Carol-Analytics:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TOTVS-Agent-Analytics:serve:production"
+              "devServerTarget": "TOTVS-Carol-Analytics:serve:production"
             }
           }
         }
