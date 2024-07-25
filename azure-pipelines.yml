@@ -6,8 +6,8 @@ pool:
 
 variables:
   ArtifactName: TOTVS-Carol-Analytics
-  FeedName: agent-fastanalytics-protheus-backoffice
-  FeedDescription: 'Programa Agent, usado para envio de dados ao ambiente de GoodData do produto FAST Analytics - Protheus Backoffice'
+  FeedName: totvs-carol-analytics
+  FeedDescription: 'CarolApp do GoodData Cloud'
 
 steps:
 - task: NodeTool@0
@@ -37,4 +37,14 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)/$(ArtifactName)-$(ArtifactVersion).zip'
     artifact: '$(ArtifactName)-$(ArtifactVersion).zip'
     publishLocation: 'pipeline'
-    
+- task: UniversalPackages@0
+  inputs:
+    command: 'publish'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '4814bdf4-e908-4a6c-951f-33996fa5e5db/fbab36c1-750b-4a46-8e1a-26c68726e78a'
+    vstsFeedPackagePublish: '$(FeedName)'
+    versionOption: '$(ArtifactVersion)'
+    versionPublish: '$(ArtifactVersionNumber)'
+    packagePublishDescription: '$(FeedDescription)'
+    verbosity: 'Debug'
