@@ -58,3 +58,9 @@ jobs:
       method: 'POST'
       urlSuffix: '/files/upload'
       waitForCompletion: 'false'
+      body: 12345
+      headers: |
+       {
+       "Content-Type":"application/x-zip-compressed", 
+       "Authorization": "Bearer 427d50d8cf7e4ad2ac59339bdaa254d2", 
+       }
