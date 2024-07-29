@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { environment } from '../../environments/environment';
+import { env } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,14 @@ export class SessionService {
     this._TOKEN_SST = null;
   }
   
-  private _ENVIRONMENT: string;
+  private _ENVIRONMENT: any;
   get ENVIRONMENT(): string {
     return this._ENVIRONMENT;
   }
   
-  set ENVIRONMENT(env: string) {
+  set ENVIRONMENT(env: any) {
     this._ENVIRONMENT = env;
-    if (!environment.production) {
+    if (!env.production) {
       this.SERVER = '/gooddata/';
     } else {
       this.SERVER = 'https://' + env + '/';

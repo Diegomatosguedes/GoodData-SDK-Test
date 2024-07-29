@@ -3,8 +3,8 @@ export const CNST_DUPLICATE_REGEX: string = '\\(([0-9]*)\\)';
 
 /* Nome do Agent (Completo e Simplificado) */
 export const CNST_PROGRAM_NAME: any = {
-   DEFAULT: 'TOTVS Agent Analytics'
-  ,SIMPLE: 'TOTVS Agent'
+   DEFAULT: 'TOTVS Carol Analytics'
+  ,SIMPLE: 'TOTVS Carol'
 };
 
 /* Versão do Agent (Desenv. e Prod.) */
@@ -13,6 +13,6 @@ export const CNST_PROGRAM_VERSION: any = {
   ,PRODUCTION: 'v'
 };
 
-//Valores mínimo / máximo de portas
-export const CNST_PORT_MINIMUM: number = 1024;
-export const CNST_PORT_MAXIMUM: number = 65535;
+export const CNST_GOODDATA_APITOKEN: string = 'gooddataapitoken';
+export const CNST_GOODDATA_HOMEPAGE_DASHBOARD: string = 'gooddatadashboardhomepage';
+export const CNST_GOODDATA_HOMEPAGE_WORKSPACE: string = 'gdworkspacehomepage';

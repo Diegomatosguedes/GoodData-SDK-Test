@@ -1,6 +1,7 @@
-<po-page-list [p-title]="lbl_title">
+<po-page-list>
   
   <!-- Componente de animação de carregamento do Portinari.UI -->
   <po-loading-overlay [hidden]="(po_lo_text.value == null)" p-screen-lock="true" [p-text]="po_lo_text.value"></po-loading-overlay>
   
+  <iframe [src]="dynamicsrc" height="700px" width="100%" frameborder="0"></iframe>
 </po-page-list>

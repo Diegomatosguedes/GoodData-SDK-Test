@@ -5,12 +5,6 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationInput } from './translation-interface';
 
-/* Constantes de banco de dados */
-import {
-  CNST_PORT_MINIMUM,
-  CNST_PORT_MAXIMUM
-} from '../../app-constants';
-
 /* Nome da aplicação (Agent) */
 import { CNST_PROGRAM_NAME } from '../../app-constants';
 
@@ -190,7 +184,6 @@ export class TranslationService extends TranslateService implements PipeTransfor
       new TranslationInput('DATABASES.TOOLTIPS.DRIVER_PATH', []),
       new TranslationInput('DATABASES.TOOLTIPS.HOST_TYPE', []),
       new TranslationInput('DATABASES.TOOLTIPS.HOST_NAME', []),
-      new TranslationInput('DATABASES.TOOLTIPS.PORT', ['' + CNST_PORT_MINIMUM, '' + CNST_PORT_MAXIMUM]),
       new TranslationInput('DATABASES.TOOLTIPS.CONNECTION_STRING', []),
       new TranslationInput('DATABASES.MESSAGES.LOADING', []),
       new TranslationInput('DATABASES.MESSAGES.LOADING_OK', []),
@@ -201,7 +194,6 @@ export class TranslationService extends TranslateService implements PipeTransfor
       new TranslationInput('DATABASES.MESSAGES.LOGIN_OK', []),
       new TranslationInput('DATABASES.MESSAGES.LOGIN_WARNING', []),
       new TranslationInput('DATABASES.MESSAGES.ERROR_INVALID_IP', []),
-      new TranslationInput('DATABASES.MESSAGES.ERROR_INVALID_PORT', ['' + CNST_PORT_MINIMUM, '' + CNST_PORT_MAXIMUM]),
       new TranslationInput('DATABASES.MESSAGES.VALIDATE', []),
       new TranslationInput('DATABASES.MESSAGES.PASSWORD_ENCRYPT', []),
       new TranslationInput('ELECTRON.UPDATE_READY_TITLE', []),

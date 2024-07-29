@@ -278,3 +278,7 @@ nav {
 .po-table-container-fixed-inner::-webkit-scrollbar, .po-table-main-container::-webkit-scrollbar {
     width: 10px;
 }
+
+.po-page-content {
+    padding: 0px;
+}

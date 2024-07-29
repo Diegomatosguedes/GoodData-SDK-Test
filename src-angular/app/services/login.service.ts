@@ -10,7 +10,7 @@ import { Utilities } from '../utilities/utilities';
 /* Serviço de tradução do Agent */
 import { TranslationService } from './translation/translation-service';
 
-import { environment } from '../../environments/environment';
+import { env } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

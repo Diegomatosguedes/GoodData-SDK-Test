@@ -14,11 +14,11 @@ import {
 import { Utilities } from './utilities/utilities';
 import { CNST_LOGLEVEL } from './utilities/utilities-constants';
 
-/* Serviço de comunicação com o Electron */
-import { ElectronService } from './core/services';
+/* Componentes de utilitários do Agent */
+import { GoodDataService } from './services/gooddata-service';
 
-/* Serviço de consulta do acesso remoto (MirrorMode) */
-import { MirrorService } from './services/mirror-service';
+/* Componentes de utilitários do Agent */
+import { CarolService } from './services/carol-service';
 
 /* Serviço de configuração do Agent */
 import { ConfigurationService } from './configuration/configuration-service';
@@ -32,10 +32,16 @@ import { TranslationInput } from './services/translation/translation-interface';
 import { MenuService } from './services/menu-service';
 
 /* Componentes rxjs para controle de Promise / Observable */
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 /* Constantes do Agent */
 import { CNST_PROGRAM_NAME, CNST_PROGRAM_VERSION } from './app-constants';
+
+import {
+  CNST_GOODDATA_APITOKEN,
+  CNST_GOODDATA_HOMEPAGE_DASHBOARD,
+  CNST_GOODDATA_HOMEPAGE_WORKSPACE
+} from './app-constants';
 
 @Component({
   selector: 'totvs-agent-analytics',
@@ -60,8 +66,8 @@ export class AppComponent {
   /*** MÉTODOS DO MÓDULO  ***/
   /**************************/
   constructor(
-    private _electronService: ElectronService,
-    private _mirrorService: MirrorService,
+    private _carolService: CarolService,
+    private _gooddataService: GoodDataService,
     private _translateService: TranslationService,
     private _configurationService: ConfigurationService,
     private _menuService: MenuService,
@@ -72,21 +78,36 @@ export class AppComponent {
     
     //Configurações padrões do Agent
     this.programName = CNST_PROGRAM_NAME.SIMPLE;
-    this._translateService.init().subscribe();
-    
-    //Carrega as configurações atuais do Agent, caso existam
-    //this._configurationService.getConfiguration(false).subscribe((conf: Configuration) => {
-      this._translateService.use('pt.BR').subscribe((b: boolean) => {
-        
+    this._translateService.init().pipe(switchMap(() => {
+      return this._translateService.use('pt.BR').pipe(switchMap((b: boolean) => {
         this.version = CNST_PROGRAM_VERSION.DEVELOPMENT;
-        
+
         //Traduz os textos do menu principal do Agent, e vincula o serviço de comunicação do menu
         this.setMenuTranslations('teste');
-        this._menuService.menuRefObs$.subscribe(() => {
-          this.setMenuTranslations('teste');
-        });
-      });
-    //});
+        //return this._menuService.menuRefObs$.pipe(switchMap(() => {
+          //this.setMenuTranslations('teste');
+
+          //
+          return this._carolService.getCarolAppSettings().pipe(map((settings: any) => {
+            this._utilities.writeToLog(CNST_LOGLEVEL.DEBUG, 'Carol app setings', null);
+
+            settings.map((setting: any) => {
+              switch (setting.name) {
+                case CNST_GOODDATA_APITOKEN:
+                  this._gooddataService.setAPIToken(setting.value);
+                  break;
+                case CNST_GOODDATA_HOMEPAGE_WORKSPACE:
+                  this._gooddataService.setHomepageWorkspace(setting.value);
+                  break;
+                case CNST_GOODDATA_HOMEPAGE_DASHBOARD:
+                  this._gooddataService.setHomepageDashboard(setting.value);
+                  break;
+              }
+            });
+          //}));
+        }));
+      }));
+    })).subscribe();
   }
   
   /* Método de tradução dos textos do menu principal do Agent */
@@ -96,7 +117,7 @@ export class AppComponent {
     if (serialNumber != null) {
       this.menus = [
         {
-          label: this._translateService.CNST_TRANSLATIONS['MENU.WORKSPACES'], icon: 'po-icon-chart-columns', link: './workspace'
+          label: this._translateService.CNST_TRANSLATIONS['MENU.WORKSPACES'], icon: 'po-icon-chart-columns', link: './embed'
         }, {
           label: this._translateService.CNST_TRANSLATIONS['MENU.DATABASES'], icon: 'po-icon-database', link: './database'
         }, {

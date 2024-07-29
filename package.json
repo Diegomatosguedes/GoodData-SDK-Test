@@ -79,7 +79,7 @@
   },
   "scripts": {
     "start": "ng build --configuration production && .\"/node_modules/.bin/tsc\" && electron dist/TOTVS-Agent-Analytics/boot.js --trace-warnings",
-    "angular": "ng serve",
+    "angular": "ng serve --ssl",
     "build-angular": "ng build --configuration production",
     "build-electron": ".\"/node_modules/.bin/tsc\"",
     "build-electron-w": ".\"/node_modules/.bin/tsc\" -w",

@@ -24,6 +24,9 @@ import {
 /* Módulos da página de configuração */
 import { ConfigurationModule } from './configuration/configuration.module';
 
+/* Módulos da página de configuração */
+import { EmbedModule } from './embed/embed.module';
+
 /* Serviço de comunicação com o menu principal do Agent (para atualizar a tradução do Menu) */
 import { MenuService } from './services/menu-service';
 
@@ -56,6 +59,7 @@ import { AppRoutingModule } from './app-routing.module';
     PoModalModule,
     PoLinkModule,
     ConfigurationModule,
+    EmbedModule,
     TranslationModule,
     TranslateModule.forRoot({
       loader: {
