@@ -9,11 +9,10 @@ import {
   PoToasterOrientation
 } from '@po-ui/ng-components';
 
-/* Serviço de comunicação com o Electron */
-import { ElectronService } from '../core/services';
-
 /* Serviço de sessão do Agent */
 import { SessionService } from '../services/session-service';
+
+import { env } from '../../environments/environment';
 
 /* Constantes de utilitários do Agent */
 import { CNST_LOGLEVEL, CNST_SYSTEMLEVEL, CNST_LOCALHOST_PORT } from './utilities-constants';
@@ -25,19 +24,20 @@ export class Utilities {
   
   //Define se o modo debug está ativado, ou não (via serviço de configuração)
   private debug: boolean = false;
-  
+
+  public CNST_LOADING_URL: string = '../../../resources/loading.gif';
+
   /**************************/
   /*** MÉTODOS DO MÓDULO  ***/
   /**************************/
   constructor(
-    private _electronService: ElectronService,
     private _sessionService: SessionService,
     private _notificationService: PoNotificationService
-  ) { this.debug = true; }
-  
-  /* Método que retorna a URL de comunicação com a API do Angular (Apenas em modo desenv.) */
+  ) { this.debug = !env.production; }
+
+  /* Método que retorna a URL de comunicação do FrontEnd do Angular */
   public getLocalhostURL(): string {
-    return 'http://localhost:' + CNST_LOCALHOST_PORT;
+    return 'https://analytics.totvs.carol:' + CNST_LOCALHOST_PORT;
   }
   
   /* Método de inclusão dos cabeçalhos padrões das requisições http */
@@ -51,8 +51,8 @@ export class Utilities {
   
   /* Método de inclusão dos cabeçalhos de autenticação da plataforma GoodData */
   public addGoodDataHeaders(headers: HttpHeaders): HttpHeaders {
-    if (this._sessionService.TOKEN_SST != undefined) { headers = headers.append('X-GDC-AuthSST', this._sessionService.TOKEN_SST); }
-    if (this._sessionService.TOKEN_TT != undefined) { headers = headers.append('X-GDC-AuthTT', this._sessionService.TOKEN_TT); }
+    let token: string = 'MmUzZTNlZmItMjdkMC00NDNlLWE3ZjItZTUzMmFjOTZmMWRiOkdEQ2xvdWRfVG9rZW46VGpKVERUQUQrbE55Zi9zRHFwQ3dLY3g1eWN0S3NXU2s=';
+    headers = headers.append('Authorization', 'Bearer ' + token);
     return headers;
   }
   
@@ -67,11 +67,6 @@ export class Utilities {
     if (loglevel.level == CNST_LOGLEVEL.WARN.level) console.warn(loglevel.tag + ' ' + message);
     if (loglevel.level == CNST_LOGLEVEL.INFO.level) console.info(loglevel.tag + ' ' + message);
     if ((this.debug) && (loglevel.level == CNST_LOGLEVEL.DEBUG.level)) console.debug(loglevel.tag + ' ' + message);
-    
-    //Redirecionamento da requisição p/ Electron (caso disponível), para gravar a mensagem de log em arquivo local
-    if (this._electronService.isElectronApp) {
-      this._electronService.ipcRenderer.sendSync('AC_writeToLog', loglevel, CNST_SYSTEMLEVEL.ANGL, message, err);
-    }
   }
   
   /* Método de criação da popup de notificações para o usuário */

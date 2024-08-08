@@ -100,7 +100,7 @@ export const CNST_TRANSLATIONS_PT_BR: any = {
       ONLINE_CONSULTANT: 'Aviso - Acesso remoto ativado por consultor externo. Este Agent está agora bloqueado até o término do mesmo.',
       OFFLINE: 'Acesso remoto finalizado. O Agent está disponível para uso novamente.',
       RUNNING: 'Acesso remoto em execução',
-      WAIT: 'Aguarde...',
+      WAIT: 'Aguarde',
       WARNING: 'Aviso - Acesso remoto não pode ser testado sem o Electron.',
       WARNING_SAME_AGENT: 'Aviso - Acesso remoto não é permitido para o mesmo Agent de origem.',
       LOADING: '========== INICIANDO MIRRORMODE [${p1}] ==========',
@@ -175,15 +175,25 @@ export const CNST_TRANSLATIONS_PT_BR: any = {
   },
   MENU: {
     WORKSPACES: 'Ambientes',
-    DATABASES: 'Bancos de Dados',
-    SCHEDULES: 'Agendamentos',
-    QUERIES: 'Consultas (Queries)',
-    SCRIPTS: 'Rotinas (Scripts)',
-    MONITOR: 'Monitor',
+    DASHBOARDS: 'Paineis',
+    SUPPORT: 'Suporte',
+    SUPPORT_TICKETS: 'Abertura de tickets',
+    SUPPORT_TDN: 'Central TOTVS',
+    SUPPORT_TRAINING: 'Treinamento online',
+    SUPPORT_GOODDATA_HELP: 'Documentação da GoodData',
     CONFIGURATION: 'Configurações',
-    ACTIVATION: 'Ativação',
-    REMOTE: 'Acesso remoto',
-    EXIT: 'Sair'
+    CONFIGURATION_USERS: 'Gestão de usuários',
+    CONFIGURATION_PERMISSIONS: 'Permissões de usuários',
+    CONFIGURATION_STYLE: 'Estilização',
+    CONFIGURATION_CACHE: 'Limpar cache',
+    LCM: 'LCM (TOTVERS)',
+    LCM_1: 'Opção 1',
+    LCM_2: 'Opção 2',
+    LCM_3: 'Opção 3',
+    EXIT: 'Sair',
+    LABELS: {
+      CLOSE: 'Fechar este menu'
+    }
   },
   LANGUAGES: {
     TITLE: 'Idioma da aplicação',

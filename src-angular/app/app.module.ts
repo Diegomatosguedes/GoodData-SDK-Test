@@ -4,9 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-/* Componentes do Electron */
-import { CoreModule } from './core/core.module';
-
 /* Componentes do Angular para comunicação http */
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -20,12 +17,14 @@ import {
   PoLinkModule
 } from '@po-ui/ng-components';
 
-
 /* Módulos da página de configuração */
-import { ConfigurationModule } from './configuration/configuration.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 /* Serviço de comunicação com o menu principal do Agent (para atualizar a tradução do Menu) */
 import { MenuService } from './services/menu-service';
+
+import { GoodDataService } from './services/gooddata-service';
+
 
 /* Serviço de tradução do Agent */
 import { CustomTranslationLoader } from './services/translation/custom-translation-loader';
@@ -47,7 +46,6 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     CommonModule,
-    CoreModule,
     HttpClientModule,
     PoMenuModule,
     PoNotificationModule,
@@ -55,7 +53,7 @@ import { AppRoutingModule } from './app-routing.module';
     PoModule,
     PoModalModule,
     PoLinkModule,
-    ConfigurationModule,
+    AnalyticsModule,
     TranslationModule,
     TranslateModule.forRoot({
       loader: {

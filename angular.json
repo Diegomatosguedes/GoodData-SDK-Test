@@ -64,7 +64,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "TOTVS-Carol-Analytics:build",
-            "proxyConfig": "src-angular/proxy.conf.js"
+            "proxyConfig": "src-angular/proxy.conf.js",
+            "host": "analytics.totvs.carol",
+            "port": 4200
           },
           "assets": [
             "i18n"

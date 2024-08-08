@@ -4,7 +4,12 @@
   <po-loading-overlay [hidden]="(po_lo_text.value == null)" p-screen-lock="true" [p-text]="po_lo_text.value"></po-loading-overlay>
  
   <!-- Menu principal do Agent -->
-  <po-menu [p-menus]="menus">
+  <po-menu
+    [p-collapsed]="false"
+    [p-menus]="menus"
+    [p-filter]="true"
+    [p-automatic-toggle]="false"
+  >
     <ng-template p-menu-header-template>
       <h2 class="menu-title po-menu-item">
         {{ programName }} - {{ version }}
@@ -12,29 +17,6 @@
     </ng-template>
   </po-menu>
   
-  <po-page-list p-title="lbl_title">
-      <!-- Título da seção "Aplicação" do Agent -->
-      <div class="po-row">
-          <div class="po-row-50-title">
-              <span class="title">hyhy</span>
-              &nbsp;
-              <span class="subtitle">aaa</span>
-          </div>
-          <div class="po-row-50-title">
-              <span class="title">teste</span>
-              &nbsp;
-              <span class="subtitle">Teste</span>
-              <div>
-                  <span class="subtitle">eee</span>
-              </div>
-          </div>
-      </div>
-
-      <div class="po-row">
-          <iframe src="https://bossy-fly.trial.cloud.gooddata.com/dashboards/embedded/#/workspace/7c9ad66434ac457eb1c497211895d5d9/dashboard/d0acb059-04ab-45a9-8bfc-6289ee62db04?showNavigation=true&setHeight=700" height="700px" width="100%" frameborder="0"></iframe>
-          </div>
-  </po-page-list>
-
   <!-- Raiz de redirecionamento para roteamento do Angular -->
   <router-outlet></router-outlet>
 </div>

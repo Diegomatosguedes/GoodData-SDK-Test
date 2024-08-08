@@ -2,17 +2,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-/* Módulos da página de configuração */
-import { ConfigurationComponent } from './configuration/configuration.component';
+/* Módulos da página do GoodData embedado */
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 /* Rotas de redirecionamento disponíveis no Agent */
 const routes: Routes = [
-  { path: 'configuration', component: ConfigurationComponent }
+  { path: 'analytics', component: AnalyticsComponent }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload' })
   ],
   exports: [
     RouterModule

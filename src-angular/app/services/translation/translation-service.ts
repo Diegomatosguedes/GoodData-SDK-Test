@@ -5,12 +5,6 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationInput } from './translation-interface';
 
-/* Constantes de banco de dados */
-import {
-  CNST_PORT_MINIMUM,
-  CNST_PORT_MAXIMUM
-} from '../../app-constants';
-
 /* Nome da aplicação (Agent) */
 import { CNST_PROGRAM_NAME } from '../../app-constants';
 
@@ -190,7 +184,6 @@ export class TranslationService extends TranslateService implements PipeTransfor
       new TranslationInput('DATABASES.TOOLTIPS.DRIVER_PATH', []),
       new TranslationInput('DATABASES.TOOLTIPS.HOST_TYPE', []),
       new TranslationInput('DATABASES.TOOLTIPS.HOST_NAME', []),
-      new TranslationInput('DATABASES.TOOLTIPS.PORT', ['' + CNST_PORT_MINIMUM, '' + CNST_PORT_MAXIMUM]),
       new TranslationInput('DATABASES.TOOLTIPS.CONNECTION_STRING', []),
       new TranslationInput('DATABASES.MESSAGES.LOADING', []),
       new TranslationInput('DATABASES.MESSAGES.LOADING_OK', []),
@@ -201,7 +194,6 @@ export class TranslationService extends TranslateService implements PipeTransfor
       new TranslationInput('DATABASES.MESSAGES.LOGIN_OK', []),
       new TranslationInput('DATABASES.MESSAGES.LOGIN_WARNING', []),
       new TranslationInput('DATABASES.MESSAGES.ERROR_INVALID_IP', []),
-      new TranslationInput('DATABASES.MESSAGES.ERROR_INVALID_PORT', ['' + CNST_PORT_MINIMUM, '' + CNST_PORT_MAXIMUM]),
       new TranslationInput('DATABASES.MESSAGES.VALIDATE', []),
       new TranslationInput('DATABASES.MESSAGES.PASSWORD_ENCRYPT', []),
       new TranslationInput('ELECTRON.UPDATE_READY_TITLE', []),
@@ -243,14 +235,21 @@ export class TranslationService extends TranslateService implements PipeTransfor
       new TranslationInput('LICENSES.MODULES.WMS', []),
       new TranslationInput('LICENSES.MODULES.CUSTOM', []),
       new TranslationInput('MENU.WORKSPACES', []),
-      new TranslationInput('MENU.DATABASES', []),
-      new TranslationInput('MENU.SCHEDULES', []),
-      new TranslationInput('MENU.QUERIES', []),
-      new TranslationInput('MENU.SCRIPTS', []),
-      new TranslationInput('MENU.MONITOR', []),
+      new TranslationInput('MENU.DASHBOARDS', []),
+      new TranslationInput('MENU.SUPPORT', []),
+      new TranslationInput('MENU.SUPPORT_TICKETS', []),
+      new TranslationInput('MENU.SUPPORT_TDN', []),
+      new TranslationInput('MENU.SUPPORT_TRAINING', []),
+      new TranslationInput('MENU.SUPPORT_GOODDATA_HELP', []),
       new TranslationInput('MENU.CONFIGURATION', []),
-      new TranslationInput('MENU.ACTIVATION', []),
-      new TranslationInput('MENU.REMOTE', []),
+      new TranslationInput('MENU.CONFIGURATION_USERS', []),
+      new TranslationInput('MENU.CONFIGURATION_PERMISSIONS', []),
+      new TranslationInput('MENU.CONFIGURATION_STYLE', []),
+      new TranslationInput('MENU.CONFIGURATION_CACHE', []),
+      new TranslationInput('MENU.LCM', []),
+      new TranslationInput('MENU.LCM_1', []),
+      new TranslationInput('MENU.LCM_2', []),
+      new TranslationInput('MENU.LCM_3', []),
       new TranslationInput('MENU.EXIT', []),
       new TranslationInput('MIRROR_MODE.MODAL.TITLE', []),
       new TranslationInput('MIRROR_MODE.MODAL.DESCRIPTION_1', []),

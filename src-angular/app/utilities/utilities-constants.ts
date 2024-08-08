@@ -1,11 +1,9 @@
 //Porta que hospeda a API do Angular, usada para cadastro das informações do Agent (Apenas em modo de desenv.)
-export const CNST_LOCALHOST_PORT: number = 3000;
+export const CNST_LOCALHOST_PORT: number = 4200;
 
 //Níveis de resposta do sistema (Angular / Electron / Java)
 export const CNST_SYSTEMLEVEL: any = {
    ANGL: '[ANGL]'
-  ,ELEC: '[ELEC]'
-  ,JAVA: '[JAVA]'
 };
 
 //Níveis de resposta dos logs
