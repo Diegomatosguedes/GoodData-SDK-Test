@@ -8,5 +8,6 @@ assets/*
 !assets/dbTemplate.json
 .angular
 .vs
+azure-pipelines.yml
 src-electron/encryption/keys/agent.rsa.public
 src-electron/encryption/keys/agent.rsa.private

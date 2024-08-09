@@ -139,7 +139,7 @@
     "eslint": "^8.0.0",
     "json-server": "^0.17.3",
     "ts-node": "^10.9.1",
-    "typescript": "~5.2.2"
+    "typescript": "~5.4.5"
   },
   "'main'": "'./dist/TOTVS-Agent-Analytics/boot.js'"
 }

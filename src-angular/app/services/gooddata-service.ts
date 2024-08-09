@@ -31,7 +31,6 @@ import { Observable, map, switchMap, of, catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
 export class GoodDataService {
   /**************************/
   /***     VARIÁVEIS      ***/
@@ -147,11 +146,6 @@ export class GoodDataService {
     this._CURRENT_DASHBOARD = this.GD_DASHBOARDS.find((ds: Dashboard) => (ds.dashboardId == dashboardId));
     return of((this._CURRENT_DASHBOARD != null ? true : false));
   }
-
-
-
-
-
 
   public getGDCloudWorkspaceData(ws: string): Observable<any> {
     this._utilities.writeToLog(CNST_LOGLEVEL.DEBUG, 'pegando dados do gooddata cloud', null);

@@ -18,7 +18,6 @@ import { CNST_LOGLEVEL } from './utilities/utilities-constants';
 /* Componentes de utilitários do Agent */
 import { GoodDataService } from './services/gooddata-service';
 
-
 import { WorkspacePermission } from './utilities/sharedInterfaces/workspacePermission-interface';
 import { Dashboard } from './utilities/sharedInterfaces/dashboard-interface';
 
