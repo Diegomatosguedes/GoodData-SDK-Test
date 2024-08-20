@@ -4,8 +4,6 @@ dist/
 logs/
 tmp/
 remote/
-assets/*
-!assets/dbTemplate.json
 .angular
 .vs
 azure-pipelines.yml

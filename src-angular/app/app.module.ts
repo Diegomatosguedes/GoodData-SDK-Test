@@ -7,6 +7,19 @@ import { CommonModule } from '@angular/common';
 /* Componentes do Angular para comunicação http */
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+/* Dependências do TOTVSApps para comunicação com outros aplicativos da plataforma */
+import {
+  AppHeaderModule,
+  HeaderModuleOptions
+} from '@totvs-apps-components/header';
+import {
+  AuthModule,
+  AuthModuleOptions
+} from '@totvs-apps-components/auth';
+
+/* Configurações de ambiente da aplicação */
+import { CNST_HEADER_MODULE_OPTIONS } from '../environments/environment';
+
 /* Componentes visuais da biblioteca Portinari.UI */
 import {
   PoMenuModule,
@@ -17,14 +30,29 @@ import {
   PoLinkModule
 } from '@po-ui/ng-components';
 
-/* Módulos da página de configuração */
+/* Configurações de ambiente da aplicação */
+import { env } from '../environments/environment';
+
+/* Módulo da página inicial (Home) da aplicação */
+import { HomeModule } from './home/home.module';
+
+/* Módulo da página de analytics */
 import { AnalyticsModule } from './analytics/analytics.module';
+
+/* Módulo da página de análise dos dados */
+import { AnalyzeModule } from './analyze/analyze.module';
+
+/* Módulo da página de edição de métricas */
+import { MetricsModule } from './metrics/metrics.module';
+
+/* Módulo da página de edição de métricas */
+import { DataModelModule } from './datamodel/datamodel.module';
+
+/* Módulo da página de configuração */
+import { ConfigurationModule } from './configuration/configuration.module';
 
 /* Serviço de comunicação com o menu principal do Agent (para atualizar a tradução do Menu) */
 import { MenuService } from './services/menu-service';
-
-import { GoodDataService } from './services/gooddata-service';
-
 
 /* Serviço de tradução do Agent */
 import { CustomTranslationLoader } from './services/translation/custom-translation-loader';
@@ -34,9 +62,21 @@ import {
   TranslateLoader
 } from '@ngx-translate/core';
 
-/* Declaração do módulo primário do Agent */
+/* Declaração do módulo primário da aplicação */
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+const authOptions: AuthModuleOptions = {
+  config: {
+    shouldPromptTokenRequest: env.shouldPromptTokenRequest,
+    appCodeDevMode: env.appCodeDevMode,
+    DEV: env.DEV,
+    STAGING: env.STAGING,
+    PROD: env.PROD,
+    pkceEnabled: false
+  },
+};
 
 @NgModule({
   declarations: [
@@ -53,7 +93,12 @@ import { AppRoutingModule } from './app-routing.module';
     PoModule,
     PoModalModule,
     PoLinkModule,
+    HomeModule,
     AnalyticsModule,
+    AnalyzeModule,
+    MetricsModule,
+    DataModelModule,
+    ConfigurationModule,
     TranslationModule,
     TranslateModule.forRoot({
       loader: {
@@ -63,12 +108,15 @@ import { AppRoutingModule } from './app-routing.module';
           HttpClient
         ]
       }
-     }),
+    }),
+    AppHeaderModule.forRoot(CNST_HEADER_MODULE_OPTIONS),
+    //AuthModule.forRoot(authOptions),
     AppRoutingModule
   ],
   providers: [
     AppModule,
-    MenuService
+    MenuService,
+    provideAnimationsAsync()
   ],
   bootstrap: [
     AppComponent

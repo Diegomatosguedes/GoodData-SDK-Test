@@ -4,9 +4,6 @@ import { Injectable } from '@angular/core';
 /* Dependência de tradução de mensagens */
 import { TranslateLoader } from '@ngx-translate/core';
 
-/* Serviço de comunicação http (usado pelo ngx-translate) */
-import { HttpService } from '../http.service';
-
 /* Traduções disponíveis no Agent */
 import { CNST_TRANSLATIONS } from './translation-constants';
 
@@ -22,7 +19,6 @@ export class CustomTranslationLoader implements TranslateLoader {
   /*** MÉTODOS DO MÓDULO  ***/
   /**************************/
   constructor(
-    private _httpService: HttpService
   ) {}
   
   /* Método que retorna todas as mensagens do idioma informado */

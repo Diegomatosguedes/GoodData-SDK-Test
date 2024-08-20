@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "downlevelIteration": true,
-    "outDir": "./dist/TOTVS-Agent-Analytics",
+    "outDir": "./dist/TOTVS-Carol-Analytics-FrontEnd",
     "sourceMap": true,
     "declaration": false,
     "module": "commonjs",

@@ -17,11 +17,11 @@ import {
 import { TranslationModule } from '../services/translation/translation.module';
 
 /* Declaração de módulo de analytics da aplicação */
-import { AnalyticsComponent } from './analytics.component';
+import { MetricsComponent } from './metrics.component';
 
 @NgModule({
   declarations: [
-    AnalyticsComponent
+    MetricsComponent
   ],
   imports: [
     FormsModule,
@@ -36,4 +36,4 @@ import { AnalyticsComponent } from './analytics.component';
   ],
   providers: []
 })
-export class AnalyticsModule {}
+export class MetricsModule {}

@@ -9,13 +9,15 @@ import {
   PoToasterOrientation
 } from '@po-ui/ng-components';
 
-/* Serviço de sessão do Agent */
-import { SessionService } from '../services/session-service';
-
 import { env } from '../../environments/environment';
 
-/* Constantes de utilitários do Agent */
-import { CNST_LOGLEVEL, CNST_SYSTEMLEVEL, CNST_LOCALHOST_PORT } from './utilities-constants';
+/* Constantes de utilitários da aplicação */
+import {
+  CNST_LOGLEVEL,
+  CNST_SYSTEMLEVEL,
+  CNST_PROXY,
+  CNST_BACKEND
+} from './utilities-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -24,35 +26,27 @@ export class Utilities {
   
   //Define se o modo debug está ativado, ou não (via serviço de configuração)
   private debug: boolean = false;
-
-  public CNST_LOADING_URL: string = '../../../resources/loading.gif';
-
+  
   /**************************/
   /*** MÉTODOS DO MÓDULO  ***/
   /**************************/
   constructor(
-    private _sessionService: SessionService,
     private _notificationService: PoNotificationService
   ) { this.debug = !env.production; }
 
   /* Método que retorna a URL de comunicação do FrontEnd do Angular */
-  public getLocalhostURL(): string {
-    return 'https://analytics.totvs.carol:' + CNST_LOCALHOST_PORT;
+  public getBackEndURL(): string {
+    let ssl: string = ((env.production ? CNST_BACKEND.SSL : CNST_PROXY.SSL) == true ? 's' : '');
+    let port: string = (env.production ? CNST_BACKEND.PORT : CNST_PROXY.PORT);
+    return 'http' + ssl + '://analytics.totvs.carol:' + port;
   }
   
   /* Método de inclusão dos cabeçalhos padrões das requisições http */
   public getDefaultHeaders(): HttpHeaders {
     let headers = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
+    headers = headers.append('Accept', 'application\/vnd.gooddata.api\+json');
     headers = headers.append('Content-type', 'application/json');
     headers = headers.append('X-PO-No-Message', 'true');
-    return headers;
-  }
-  
-  /* Método de inclusão dos cabeçalhos de autenticação da plataforma GoodData */
-  public addGoodDataHeaders(headers: HttpHeaders): HttpHeaders {
-    let token: string = 'MmUzZTNlZmItMjdkMC00NDNlLWE3ZjItZTUzMmFjOTZmMWRiOkdEQ2xvdWRfVG9rZW46VGpKVERUQUQrbE55Zi9zRHFwQ3dLY3g1eWN0S3NXU2s=';
-    headers = headers.append('Authorization', 'Bearer ' + token);
     return headers;
   }
   

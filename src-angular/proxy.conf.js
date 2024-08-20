@@ -22,11 +22,11 @@ const PROXY_CONFIG = [
     ],
     "changeOrigin": true,
     "secure": false,
-    "target": "https://analytics.totvs.carol:4100/GoodData",
+    "target": "https://analytics.totvs.carol:8080/GoodData",
     "cookieDomainRewrite": "analytics.totvs.carol",
     "cookiePathRewrite": "/",
     "headers": {
-      "host": "https://analytics.totvs.carol:4100/GoodData",
+      "host": "https://analytics.totvs.carol:8080/GoodData",
       "origin": null
     },
     "pathRewrite": {

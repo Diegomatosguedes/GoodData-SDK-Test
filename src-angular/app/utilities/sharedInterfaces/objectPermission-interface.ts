@@ -1,4 +1,4 @@
-import { DatasourcePermission } from './datasourcePermission-interface';
+﻿import { DatasourcePermission } from './datasourcePermission-interface';
 import { WorkspacePermission } from './workspacePermission-interface';
 
 /* Interface das licenças do Agent-Server */

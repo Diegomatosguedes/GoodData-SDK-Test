@@ -1,17 +1,18 @@
-/* Constante para adicionar ao nome dos objetos duplicados */
-export const CNST_DUPLICATE_REGEX: string = '\\(([0-9]*)\\)';
-
-/* Nome do Agent (Completo e Simplificado) */
+/* Nome da aplicação (Completo e Simplificado) */
 export const CNST_PROGRAM_NAME: any = {
-   DEFAULT: 'TOTVS Carol Analytics'
-  ,SIMPLE: 'TOTVS Carol'
+  DEFAULT: 'TOTVS Carol Analytics',
+  SIMPLE: 'TOTVS Carol',
+  APP_CODE: 'gooddata-analytics'
 };
 
-/* Versão do Agent (Desenv. e Prod.) */
+/* Versão da aplicação (Desenv. e Prod.) */
 export const CNST_PROGRAM_VERSION: any = {
    DEVELOPMENT: 'Angular'
   ,PRODUCTION: 'v'
 };
+
+/* Localização dos recursos visuais da aplicação */
+export const CNST_LOADING_URL: string = 'resources/loading.gif';
 
 export const CNST_BACKEND_API_PORT: number = 4100;
 export const CNST_BACKEND_API_HOST: string = 'https://analytics.totvs.carol:' + CNST_BACKEND_API_PORT;

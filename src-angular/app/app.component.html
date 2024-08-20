@@ -2,21 +2,30 @@
   
   <!-- Componente de animação de carregamento do Portinari.UI -->
   <po-loading-overlay [hidden]="(po_lo_text.value == null)" p-screen-lock="true" [p-text]="po_lo_text.value"></po-loading-overlay>
- 
-  <!-- Menu principal do Agent -->
-  <po-menu
-    [p-collapsed]="false"
-    [p-menus]="menus"
-    [p-filter]="true"
-    [p-automatic-toggle]="false"
-   >
-      <ng-template p-menu-header-template>
-      <h2 class="menu-title po-menu-item">
-        {{ programName }} - {{ version }}
-      </h2>
-    </ng-template>
-  </po-menu>
   
-  <!-- Raiz de redirecionamento para roteamento do Angular -->
-  <router-outlet></router-outlet>
+  <div class="po-manager-header">
+    <app-header-component [options]="headerConfig"></app-header-component>
+  </div>
+  
+  <div class="app-content">
+    <!-- Menu principal da aplicação -->
+    <po-menu
+      [p-collapsed]="false"
+      [p-menus]="menus"
+      [p-filter]="true"
+      [p-automatic-toggle]="false"
+    >
+      <ng-template p-menu-header-template>
+        <div class="menu-title">
+          {{ programName }} - {{ version }}
+        </div>
+        <h6 class="menu-subtitle" *ngIf="environment != null">
+          {{ environmentLabel }} {{ environment }}
+        </h6>
+      </ng-template>
+    </po-menu>
+    
+    <!-- Raiz de redirecionamento para roteamento do Angular -->
+    <router-outlet></router-outlet>
+  </div>
 </div>

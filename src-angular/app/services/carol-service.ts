@@ -52,19 +52,14 @@ export class CarolService {
 
     return headers;
   }
-
-  /* Método que retorna a URL de comunicação com a API do Angular (Apenas em modo desenv.) */
-  public getTOTVSCarolURL(): string {
-    return (env.production ? 'https://totvstechfindev.carol.ai' : this._utilities.getLocalhostURL() + '/carol') + '/api/v1/';
-  }
-
+  
   public getCarolCurrentTenantId(): Observable<string> {
     this._utilities.writeToLog(CNST_LOGLEVEL.DEBUG, 'pegando tenant atual da carol', null);
     let headers: HttpHeaders = this.getDefaultHeaders();
 
     if (!env.production) return of(env.TOTVSCarol.tenantId);
     else if (this.getCurrentTenant() != null) return of(this.getCurrentTenant());
-    else return this._http.get<any>(this.getTOTVSCarolURL() + 'users/current', { withCredentials: true, headers: headers, observe: 'response' }).pipe(
+    else return this._http.get<any>(this._utilities.getBackEndURL() + '/carol/users/current', { withCredentials: true, headers: headers, observe: 'response' }).pipe(
       map((carol: any) => {
         this._utilities.writeToLog(CNST_LOGLEVEL.DEBUG, 'tenant atual e esse ak', null);
         this.setCurrentTenant(carol.mdmAssignedTenantId);
@@ -78,7 +73,7 @@ export class CarolService {
     let headers: HttpHeaders = this.getDefaultHeaders();
 
     return this.getCarolCurrentTenantId().pipe(switchMap((tenantId: string) => {
-      return this._http.get<any>(this.getTOTVSCarolURL() + 'tenantApps/' + tenantId + '/settings', { withCredentials: true, headers: headers, observe: 'response' }).pipe(
+      return this._http.get<any>(this._utilities.getBackEndURL() + '/carol/tenantApps/' + tenantId + '/settings', { withCredentials: true, headers: headers, observe: 'response' }).pipe(
         map((carol: any) => {
           this._utilities.writeToLog(CNST_LOGLEVEL.DEBUG, 'funcionou a chamada do tenatn carol', null);
           return carol.body.mdmTenantAppSettingValues.map((settings: any) => {
