@@ -1,11 +1,5 @@
-node_modules/
-release-builds/
-dist/
-logs/
-tmp/
-remote/
-.angular
 .vs
-azure-pipelines.yml
-src-electron/encryption/keys/agent.rsa.public
-src-electron/encryption/keys/agent.rsa.private
+.vscode
+.angular
+node_modules/
+dist/

@@ -1,88 +1,19 @@
 {
-  "build": {
-    "appId": "TOTVS.Agent.Analytics",
-    "productName": "TOTVS Agent Analytics",
-    "files": [
-      "dist/TOTVS-Agent-Analytics/*",
-      "dist/TOTVS-Agent-Analytics/src-angular/**/*",
-      "dist/TOTVS-Agent-Analytics/src-electron/**/*",
-      "dist/TOTVS-Agent-Analytics/icons/**/*",
-      "dist/TOTVS-Agent-Analytics/i18n/**/*",
-      "!dist/TOTVS-Agent-Analytics-Server/remote/assets/**/*",
-      "!dist/TOTVS-Agent-Analytics-Server/remote/logs/**/*",
-      "!dist/TOTVS-Agent-Analytics/assets/**/*",
-      "!dist/TOTVS-Agent-Analytics/src-electron/encryption/keys/agent.rsa.public",
-      "!dist/TOTVS-Agent-Analytics/src-electron/encryption/keys/agent.rsa.private"
-    ],
-    "extraFiles": [
-      "java",
-      "icons"
-    ],
-    "directories": {
-      "output": "release-builds",
-      "buildResources": "dist"
-    },
-    "asar": true,
-    "asarUnpack": [
-      "assets/*",
-      "logs/*"
-    ],
-    "win": {
-      "icon": "icons/windows/analytics.ico",
-      "target": {
-        "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      },
-      "publish": [
-        "github"
-      ]
-    },
-    "linux": {
-      "icon": "icons/linux/analytics.png",
-      "target": [
-        "deb"
-      ],
-      "publish": [
-        "github"
-      ]
-    },
-    "mac": {
-      "icon": "icons/linux/analytics.png",
-      "target": [
-        "dmg"
-      ],
-      "publish": [
-        "github"
-      ]
-    },
-    "nsis": {
-      "warningsAsErrors": false,
-      "allowToChangeInstallationDirectory": true,
-      "runAfterFinish": true,
-      "oneClick": false,
-      "perMachine": true,
-      "include": "./installers/installer.nsh"
-    }
-  },
-  "name": "totvs-carol-analytics-frontend",
+  "name": "totvs-analytics-frontend",
   "version": "1.0.0",
-  "author": "Diego Matos Guedes <suporte.gd@totvs.com.br> (https://www.totvs.com/)",
-  "homepage": "https://totvstfs.visualstudio.com/TOTVS-GoodData/_git/TOTVS-Carol-Analytics-FrontEnd",
-  "description": "Interface gráfica da aplicação Carol-Analytics, da plataforma TOTVSApps.",
-  "main": "./dist/TOTVS-Carol-Analytics-FrontEnd/site/index.html",
+  "author": "",
+  "homepage": "",
+  "description": "test project",
+  "main": "./dist/TOTVS-Analytics-FrontEnd/site/index.html",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TOTVS-GoodData/TOTVS-Carol-Analytics.git"
+    "url": ""
   },
   "scripts": {
     "start": "ng serve --ssl",
     "angular": "ng serve --ssl",
-    "docker": "docker build --platform linux/amd64 -t totvs-carol-analytics-frontend:dev .",
-    "build-angular": "ng build --configuration production",
-    "azure": "git add . && git commit -m \"Build %date% %time%\" && git push"
+    "build-angular": "ng build --configuration production"
   },
   "license": "ISC",
   "dependencies": {
@@ -96,6 +27,15 @@
     "@angular/platform-browser-dynamic": "18.2.0",
     "@angular/platform-server": "18.2.0",
     "@angular/router": "18.2.0",
+    "@gooddata/api-client-tiger": "^10.13.0",
+    "@gooddata/sdk-backend-tiger": "^10.13.0",
+    "@gooddata/sdk-ui": "^10.13.0",
+    "@gooddata/sdk-ui-all": "^10.13.0",
+    "@gooddata/sdk-ui-charts": "^10.13.0",
+    "@gooddata/sdk-ui-dashboard": "^10.13.0",
+    "@gooddata/sdk-ui-ext": "^10.13.0",
+    "@gooddata/sdk-ui-geo": "^10.13.0",
+    "@gooddata/sdk-ui-pivot": "^10.13.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@po-ui/ng-components": "18.2.0",
@@ -105,9 +45,17 @@
     "@totvs-apps-components/header": "^18.0.0",
     "@totvs/po-theme": "^15.15.0",
     "@totvs/thf-theme-kendo": "^4.0.1",
+    "@types/node": "^22.5.5",
+    "angular-server-side-configuration": "^18.2.0",
     "core-js": "^3.0.0",
+    "hex-to-css-filter": "^5.4.0",
+    "lodash": "^4.17.21",
+    "mapbox-gl": "^3.7.0",
     "path": "^0.12.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rxjs": "^7.8.1",
+    "tinycolor2": "^1.6.0",
     "tslib": "^2.5.2",
     "zone.js": "~0.14.10"
   },
@@ -117,11 +65,16 @@
     "@angular/compiler": "^18.2.0",
     "@angular/compiler-cli": "18.2.0",
     "@angular/language-service": "18.2.0",
-    "@types/node": "^18.11.18",
+    "@gooddata/catalog-export": "^10.13.0",
+    "@types/lodash": "^4.17.13",
+    "@types/mapbox-gl": "^3.4.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.0.0",
     "json-server": "^0.17.3",
+    "sonarqube-scanner": "^4.2.1",
     "ts-node": "^10.9.1",
     "typescript": "~5.4.5"
   }

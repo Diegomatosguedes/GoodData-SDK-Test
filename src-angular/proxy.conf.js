@@ -6,7 +6,7 @@ const PROXY_CONFIG = [
     "changeOrigin": true,
     "secure": false,
     "target": "https://totvstechfindev.carol.ai",
-    "cookieDomainRewrite": "analytics.totvs.carol",
+    "cookieDomainRewrite": "analytics.totvs.teste",
     "cookiePathRewrite": "/",
     "headers": {
       "host": "https://totvstechfindev.carol.ai",
@@ -14,7 +14,7 @@ const PROXY_CONFIG = [
     },
     "pathRewrite": {
       "^/carol": ""
-    } 
+    }
   },
   {
     context: [
@@ -22,17 +22,39 @@ const PROXY_CONFIG = [
     ],
     "changeOrigin": true,
     "secure": false,
-    "target": "https://analytics.totvs.carol:8080/GoodData",
-    "cookieDomainRewrite": "analytics.totvs.carol",
+    "target": "https://analytics.totvs.teste:8084",
+    "cookieDomainRewrite": "analytics.totvs.teste",
     "cookiePathRewrite": "/",
     "headers": {
-      "host": "https://analytics.totvs.carol:8080/GoodData",
+      "host": "https://analytics.totvs.teste:8084",
       "origin": null
     },
     "pathRewrite": {
       "^/gooddata": ""
     }
+  },
+  {
+    context: [
+      "/static"
+    ],
+    "changeOrigin": true,
+    "target": "https://s3.amazonaws.com/pages-myfluig-qa-us-east-1"
+  },
+  {
+    context: [
+      '/manager/api',
+      '/accounts'
+    ],
+    "changeOrigin": true,
+    "target": "https://api-fluig.dev.totvs.app"
+  },
+  {
+    context: [
+      "/core/api/v2/notification"
+    ],
+    "changeOrigin": true,
+    "target": "https://communication.dev.totvs.app"
   }
-]
+];
 
 module.exports = PROXY_CONFIG;

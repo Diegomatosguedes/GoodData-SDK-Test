@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "downlevelIteration": true,
-    "outDir": "./dist/TOTVS-Carol-Analytics-FrontEnd",
+    "outDir": "./dist/TOTVS-Analytics-FrontEnd",
     "sourceMap": true,
     "declaration": false,
     "module": "commonjs",
@@ -14,7 +14,9 @@
     "noImplicitAny": false,
     "target": "ES2022",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "@types/react",
+      "@types/react-dom"
     ],
     "lib": [
       "ES2022",

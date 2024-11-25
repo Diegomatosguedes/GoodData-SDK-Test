@@ -1,11 +1,11 @@
-export class Dashboard {
+export class Workspace {
 
-  //Id do dashboard
-  public id: string;
+  //Código do ambiente do GoodData Cloud.
+  public id: string = null;
 
-  //Nome do dashboard
-  public name: string;
-  
+  //Nome do ambiente do GoodData Cloud.
+  public name: string = null;
+
   /**************************/
   /*** MÉTODOS DO OBJETO  ***/
   /**************************/

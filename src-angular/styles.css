@@ -1,11 +1,59 @@
 @import '~@angular/cdk/overlay-prebuilt.css';
 
+.po-page {
+  width: 100% !important;
+  margin-left: 0px !important;
+}
+
+.po-overlay-fixed {
+  z-index: 10000;
+}
+
+.combo {
+    height: 40px !important;
+}
+/*
+.po-menu-inner::-webkit-scrollbar-thumb {
+    background-color: #FF0000;
+    border-radius: 10px;
+    color: #00FF00;
+}
+    */
 /* You can add global styles to this file, and also import other style files */
 :root {
     --background: #FFFFFF;
     --color-action-pressed: #FFFFFF;
+    --background-success: var(--color-feedback-positive-lightest);
+    --border-color-success: var(--color-feedback-positive-lighter);
+    --background-warning: var(--color-feedback-warning-lightest);
+    --border-color-warning: var(--color-feedback-warning-lighter);
+    --background-error: var(--color-feedback-negative-lightest);
+    --border-color-error: var(--color-feedback-negative-lighter);
 }
 
+.po-menu-item-level-two {
+  padding: 0px !important;
+}
+
+.po-toaster {
+    z-index: 11000;
+}
+
+.po-toaster-success .po-toaster-icon {
+    background-color: var(--color-feedback-positive-base);
+}
+
+.po-toaster-warning .po-toaster-icon {
+    background-color: var(--color-feedback-warning-base);
+}
+
+.po-toaster-error .po-toaster-icon {
+    background-color: var(--color-feedback-negative-base);
+}
+
+.po-modal-content {
+    width: 30%;
+}
 .mirror {
     margin-left: var(--menu-width);
     width: calc(100% - var(--menu-width));
@@ -23,14 +71,14 @@
 
 .po-wrapper {
   width: 100%;
-  height: 100%;
+  height: 100% !important;
   display: flex;
   flex-direction: column;
 }
 
 .app-content {
   flex-grow: 1;
-  height: calc(100% - 60px);
+  height: calc(100% - 40px);
 }
 
 .menu-title {
@@ -51,19 +99,24 @@
 .po-menu {
     background: #363636;
     border: none;
-    position: relative;
+    height: calc(100% - 40px);
+    top: 40px;
 }
 
 po-menu > div:first-child {
   height: 100%;
 }
 
+.po-wrapper {
+  height: calc(100% - 40px) !important;
+}
+
 login-dev > div:first-child {
   top: 0px;
 }
 
-.po-manager-header {
-    height: 60px;
+.header, .po-manager-header {
+    height: 40px !important;
 }
 
 .po-menu-short-logo {
@@ -170,14 +223,25 @@ login-dev > div:first-child {
     flex-direction: column;
 }
 
+.po-page-content {
+  height: calc(100% - 40px) !important;
+}
+
 .po-page-header {
     border-bottom: solid;
     border-color: var(--color-neutral-dark-80);
     padding: 8px;
 }
 
+.po-button-group {
+    --color-pressed: var(--color-action-hover);
+    --background-pressed: var(--color-neutral-light-00);
+}
+
 .po-page-header-title {
-  font-size: 1em !important;
+    font-size: 1.5em !important;
+    line-height: 2em !important;
+    margin: 0px !important;
 }
 
 .po-menu-header-template {

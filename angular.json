@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TOTVS-Carol-Analytics-FrontEnd": {
+    "TOTVS-Analytics-FrontEnd": {
       "root": "",
       "sourceRoot": "src-angular",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TOTVS-Carol-Analytics-FrontEnd/site",
+            "outputPath": "dist/TOTVS-Analytics-FrontEnd",
             "index": "src-angular/index.html",
             "main": "src-angular/main.ts",
             "polyfills": "src-angular/polyfills.ts",
@@ -23,6 +23,11 @@
                 "glob": "*",
                 "input": "assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "src-angular/init/dev",
+                "output": "init"
               },
               {
                 "glob": "**/*",
@@ -37,7 +42,13 @@
               "node_modules/@po-ui/style/css/po-theme-core.min.css",
               "node_modules/@progress/kendo-theme-default/dist/all.css",
               "node_modules/@totvs/thf-theme-kendo/css/thf-theme-kendo.min.css",
-              "src-angular/styles.css"
+              "src-angular/styles.css",
+              "@gooddata/sdk-ui/styles/scss/_settings.scss",
+              "@gooddata/sdk-ui-filters/styles/css/main.css",
+              "@gooddata/sdk-ui-charts/styles/css/main.css",
+              "@gooddata/sdk-ui-geo/styles/css/main.css",
+              "@gooddata/sdk-ui-pivot/styles/css/main.css",
+              "@gooddata/sdk-ui-ext/styles/css/main.css"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -53,6 +64,18 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src-angular/init/prod",
+                  "output": "init"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "node_modules/@totvs-apps-components/header/assets",
+                  "output": "assets"
                 }
               ],
               "fileReplacements": [
@@ -75,9 +98,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TOTVS-Carol-Analytics-FrontEnd:build",
+            "browserTarget": "TOTVS-Analytics-FrontEnd:build",
             "proxyConfig": "src-angular/proxy.conf.js",
-            "host": "analytics.totvs.carol",
+            "host": "analytics.totvs.teste",
             "port": 4200
           },
           "assets": [
@@ -88,38 +111,19 @@
             },
             {
               "glob": "*",
-              "input": "icons",
-              "output": "icons"
-            },
-            {
-              "glob": "*",
               "input": "assets",
-              "output": "assets"
-            },
-            {
-              "glob": "**/*",
-              "input": "node_modules/@totvs-apps-components/header/assets",
               "output": "assets"
             }
           ],
           "configurations": {
-            "production": {
-              "browserTarget": "TOTVS-Carol-Analytics-FrontEnd:build:production"
+            "development": {
+              "browserTarget": "TOTVS-Analytics-FrontEnd:build:production"
             }
           }
         },
         "server": {},
         "app-shell": {},
-        "lint": {},
-        "electron": {
-          "builder": "ngx-electronify:electron",
-          "configurations": {
-            "production": {
-              "allowIntegration": true,
-              "devTools": true
-            }
-          }
-        }
+        "lint": {}
       }
     }
   },

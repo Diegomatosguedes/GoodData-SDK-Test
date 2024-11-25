@@ -13,10 +13,7 @@ import {
   PoTooltipModule
 } from '@po-ui/ng-components';
 
-/* Serviço de tradução da aplicação */
-import { TranslationModule } from '../services/translation/translation.module';
-
-/* Declaração de módulo de página inicial da aplicação */
+/* Componente de homepage da aplicação */
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -26,7 +23,6 @@ import { HomeComponent } from './home.component';
   imports: [
     FormsModule,
     CommonModule,
-    TranslationModule,
     PoFieldModule,
     PoPageModule,
     PoLoadingModule,

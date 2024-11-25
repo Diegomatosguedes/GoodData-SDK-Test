@@ -13,10 +13,10 @@ import {
   PoTooltipModule
 } from '@po-ui/ng-components';
 
-/* Serviço de tradução da aplicação */
-import { TranslationModule } from '../services/translation/translation.module';
+/* Componente de incorporação do GoodData.UI (React) na aplicação */
+import { ReactModule } from '../react/react.module';
 
-/* Declaração de módulo de analytics da aplicação */
+/* Componente de analytics da aplicação */
 import { AnalyticsComponent } from './analytics.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { AnalyticsComponent } from './analytics.component';
   imports: [
     FormsModule,
     CommonModule,
-    TranslationModule,
+    ReactModule,
     PoFieldModule,
     PoPageModule,
     PoLoadingModule,
